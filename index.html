@@ -12,6 +12,50 @@
     
 </head>
 <body>
-    <h1>안녕하세요!</h1>
+    <header>
+        <h1>내 포트폴리오</h1>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#about">소개</a></li>
+                <li><a href="#projects">프로젝트</a></li>
+                <li><a href="#contact">연락처</a></li>
+            </ul>
+        </nav>
+
+        <style>
+            .nav-list {
+                display: flex;        /* 자식 요소(li)들을 가로로 나란히 배치 */
+                gap: 24px;             /* 각 항목 사이 간격 */
+                /*list-style: none;       li 앞에 붙는 점(•) 제거 */
+                padding: 10px;            /* 기본 여백 제거 */
+                margin: 0;
+            }
+            .nav-list a {
+                text-decoration: none; /* 밑줄 제거 */
+                color: black;
+            }
+        </style>
+    </header>
+
+    <section>
+        <h1>Hero</h1>
+        <p>안녕하세요! 올인원 2기 입니다.</p>
+        <button class="cta-button">친구 되기!</button>
+    </section>
+
+    <section>
+        <h1>About</h1>
+        <p>저는 인공지능 </p>
+        
+    </section>
+
+    <section>
+        <h1>Skill</h1>
+        <ul class="nav-list">
+            <li>Python</li>
+            <li>C++</li>
+        </ul>
+    </section>
+   
 </body>
 </html>
