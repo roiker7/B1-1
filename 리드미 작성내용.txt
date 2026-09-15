@@ -59,4 +59,13 @@ CSS 선택자	.skill	#skill
 
 이미지 태그의 `alt` 속성은 마우스를 올렸을 때 설명을 보여주는 용도가 아니라, 이미지가 로드되지 않았을 때 대체 텍스트를 보여주거나 스크린리더가 읽을 수 있도록 하는 접근성 목적의 속성이다. 마우스를 올렸을 때 설명이 뜨게 하려면 `title` 속성을 사용해야 한다.
 ---
+항목	fetch	Promise	async/await
+정체	HTTP 요청 API	비동기 결과 객체	Promise 처리 문법
+역할	요청 보냄	결과를 다룸	결과를 읽기 쉽게 처리
+단독 사용	요청용	가능	불가(반드시 Promise 기반)
+가독성	보통	then 체인 길면 낮아짐	높음
+에러 처리	자체 에러 아님	.catch()	try/catch
+실무 사용	매우 많음	매우 많음	매우 많음
+대표 조합	fetch + then	Promise 체이닝	fetch + async/await
+---
 

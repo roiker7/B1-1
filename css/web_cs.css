@@ -231,7 +231,6 @@ header {
 }
 
 .project-card h3 {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
     margin: 0;
 }
@@ -245,31 +244,28 @@ header {
 
 /* 로딩 / 에러 / 빈 상태 공통 스타일 */
 .projects-status {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1;  
     border: 1px dashed var(--line);
-    border-radius: 8px;
-    padding: 40px 24px;
+    border-radius: 8px; 
     text-align: center;
     color: #6B6B72;
 }
 
 .filter-buttons {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* 버튼이 화면에 맞게 줄바꿈되도록 */
     gap: 10px;
     margin-bottom: 24px;
 }
 
 .filter-btn {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     background: none;
     border: 1px solid var(--line);
     color: var(--ink);
     padding: 6px 14px;
     border-radius: 999px;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .filter-btn:hover {
