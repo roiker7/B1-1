@@ -2,60 +2,87 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>내 포트폴리오</title> 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 포트폴리오</title>
+
     <!-- CSS 스타일시트 연결 -->
-    <link rel="stylesheet" href="./web_cs.css">
-    
-   <!-- JavaScript 파일 연결 -->
-    <script src="./web_js.js" defer></script>
-    
+    <link rel="stylesheet" href="./css/web_cs.css">
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="./js/web_js.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>내 포트폴리오</h1>
-        <nav>
-            <ul class="nav-list">
-                <li><a href="#about">소개</a></li>
-                <li><a href="#projects">프로젝트</a></li>
-                <li><a href="#contact">연락처</a></li>
-            </ul>
-        </nav>
-
-        <style>
-            .nav-list {
-                display: flex;        /* 자식 요소(li)들을 가로로 나란히 배치 */
-                gap: 24px;             /* 각 항목 사이 간격 */
-                /*list-style: none;       li 앞에 붙는 점(•) 제거 */
-                padding: 10px;            /* 기본 여백 제거 */
-                margin: 0;
-            }
-            .nav-list a {
-                text-decoration: none; /* 밑줄 제거 */
-                color: black;
-            }
-        </style>
+        <div class="header-inner">
+            <span class="wordmark">&lt;/&gt; 내 포트폴리오</span>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <button id="theme-toggle" aria-label="다크모드 전환">🌙</button>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section>
-        <h1>Hero</h1>
-        <p>안녕하세요! 올인원 2기 입니다.</p>
-        <button class="cta-button">친구 되기!</button>
-    </section>
+    <main>
+        <section class="hero">
+            <h1>안녕하세요,<br>반가워요.</h1>
+            <p class="hero-text">
+                AI를 공부하며 개발의 기초를 하나씩 쌓아가고 있어요.
+            </p>
+            <button class="cta-button">친구 되기!</button>
+        </section>
 
-    <section>
-        <h1>About</h1>
-        <p>저는 인공지능 </p>
-        
-    </section>
+        <section id="about" class="about">
+            <h2>About</h2>
+            <div class="about-body">
+                <img class="profile-image" src="images/logo-vertical-BAqw98XA.png" alt="코디세이 로고">
+                <p>
+                    코디세이 올인원 2기입니다.<br>
+                    저는 인공지능을 공부하고 있습니다.
+                </p>
+            </div>
+        </section>
 
-    <section>
-        <h1>Skill</h1>
-        <ul class="nav-list">
-            <li>Python</li>
-            <li>C++</li>
-        </ul>
-    </section>
-   
+        <section class="skills">
+            <h2>Skill</h2>
+            <ul class="skill-list">
+                <li>Python</li>
+                <li>C++</li>
+            </ul>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <div class="projects-empty">
+                <p>프로젝트를 준비하고 있어요.<br>곧 이 자리를 채울게요.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <form>
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">문의 내용</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+
+                <button type="submit" class="cta-button">문의하기</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 내 포트폴리오. All rights reserved.<br>
+            이미지 출처: <a href="https://codyssey.kr/about/world" target="_blank">코디세이</a>
+        </p>
+    </footer>
 </body>
 </html>

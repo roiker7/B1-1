@@ -1,0 +1,280 @@
+/* ---------- 기본 설정 ---------- */
+:root {
+    --paper: #F3F2EE;
+    --ink: #1E1E24;
+    --pine: #2F5D50;
+    --amber: #D98E3F;
+    --line: #DAD7CF;
+    --max : 960px;
+}
+/* html 태그에 data-theme="dark"가 붙으면 이 값들로 덮어씀 */
+[data-theme="dark"] {
+    --paper: #1A1A1E;
+    --ink: #F3F2EE;
+    --pine: #6FB6A3;
+    --amber: #E8A860;
+    --line: #3A3A40;
+}
+
+/* 색이 갑자기 훅 바뀌지 않고 부드럽게 전환되도록 */
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#theme-toggle {
+    background: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    width: 40px;
+    height: 40px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    margin: 0;
+}
+
+main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+/* ---------- 헤더 / 내비게이션 ---------- */
+header {
+    border-bottom: 1px solid var(--line);
+    position: sticky;      /* 스크롤시 고정 */
+    top: 0;                 
+    background-color: var(--paper); /* 뒤에 비치지 않게 배경색 지정 */
+    z-index: 10;             /* 해더 맨 앞으로 보내기(우선 순위지정) */
+}
+
+.header-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.wordmark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-list {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;    
+}
+
+.nav-list li {
+    display: flex;         
+    align-items: center;     
+    height: 40px;            
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 15px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+
+    display: flex;            
+    align-items: center;      
+    height: 100%;               
+    line-height: 1;             
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+    border-color: var(--pine);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    padding-top: 88px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 52px);
+    line-height: 1.15;
+}
+
+.hero-text {
+    margin-top: 20px;
+    margin-bottom: 32px;
+    color: #a1a1ae;
+    max-width: var(--max);
+}
+
+/* ---------- 버튼 (CTA) ---------- */
+.cta-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cta-button:hover {
+    background-color: var(--pine);
+}
+
+.cta-button:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+}
+
+/* ---------- About ---------- */
+.about-body {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.profile-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover; /* 이미지가 잘리지 않고 꽉 차도록 */
+    border-radius: 50%; /* 원형으로 만들기 */
+    flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
+    background-color: #F3F2EE;
+}
+
+/* ---------- Skill ---------- */
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    border: 1px solid var(--pine);
+    color: var(--pine);
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+/* ---------- Projects (빈 상태) ---------- */
+.projects-empty {
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    padding: 40px 24px;
+    text-align: center;
+    color: #6B6B72;
+}
+
+/* ---------- Contact ---------- */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contact label {
+    font-size: 14px;
+    margin-top: 16px;
+    color: #a1a1ae;
+}
+
+.contact input,
+.contact textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    resize: vertical;
+}
+
+.contact input:focus-visible,
+.contact textarea:focus-visible {
+    outline: none;
+    border-bottom-color: var(--pine);
+}
+
+.contact button {
+    margin-top: 24px;
+    align-self: flex-start;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: #6B6B72;
+}
+
+footer a {
+    color: inherit;
+}
+
+/* ---------- 모바일 대응 ---------- */
+@media (max-width: 640px) {
+    .about-body {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section {
+        padding: 48px 0;
+    }
+}
+
+/* ---------- 모션 최소화 옵션 존중 ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
