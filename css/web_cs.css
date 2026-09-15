@@ -130,6 +130,13 @@ header {
     border-color: var(--pine);
 }
 
+#typewriter {
+  white-space: pre-line;
+  display: block;
+  min-height: 2.8em;
+  line-height: 1.4;
+}
+
 /* ---------- Hero ---------- */
 .hero {
     padding-top: 88px;

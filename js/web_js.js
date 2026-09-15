@@ -111,3 +111,26 @@ function renderProjects(repos) {
 }
 
 loadProjects();
+
+function typewriterLoop(elementId, text, speed = 100, pauseTime = 1500) {
+    const element = document.getElementById(elementId);
+    let index = 0;
+
+    function typeNextChar() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeNextChar, speed);
+        } else {
+            setTimeout(() => {
+                element.textContent = "";
+                index = 0;
+                typeNextChar();
+            }, pauseTime);
+        }
+    }
+
+    typeNextChar();
+}
+
+typewriterLoop("typewriter", "안녕하세요\n반가워요!", 200, 2500);
