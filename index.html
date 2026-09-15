@@ -56,8 +56,13 @@
 
         <section id="projects" class="projects">
             <h2>Projects</h2>
-            <div class="projects-empty">
-                <p>프로젝트를 준비하고 있어요.<br>곧 이 자리를 채울게요.</p>
+
+            <div id="language-filters" class="filter-buttons">
+                <!-- 언어 필터 버튼들이 JS로 여기 채워짐 -->
+            </div>
+
+            <div id="projects-container" class="projects-grid">
+                <!-- 프로젝트 카드가 여기에 -->
             </div>
         </section>
 
@@ -70,7 +75,7 @@
                 <label for="email">이메일</label>
                 <input type="email" id="email" name="email" required>
 
-                <label for="message">문의 내용</label>
+                <label for="message">질의 내용</label>
                 <textarea id="message" name="message" rows="4"></textarea>
 
                 <button type="submit" class="cta-button">문의하기</button>

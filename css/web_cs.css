@@ -15,6 +15,10 @@
     --amber: #E8A860;
     --line: #3A3A40;
 }
+/* 스크롤 시 부드럽게 이동하도록 */
+html {
+    scroll-behavior: smooth;
+}
 
 /* 색이 갑자기 훅 바뀌지 않고 부드럽게 전환되도록 */
 body {
@@ -201,13 +205,82 @@ header {
     border-radius: 999px;
 }
 
-/* ---------- Projects (빈 상태) ---------- */
-.projects-empty {
+/* ---------- Projects ---------- */
+/* 그리드 배치 */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* 프로젝트 카드 박스 */
+.project-card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+    border-color: var(--pine);
+}
+
+.project-card h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    margin: 0;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: #6B6B72;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* 로딩 / 에러 / 빈 상태 공통 스타일 */
+.projects-status {
+    grid-column: 1 / -1;
     border: 1px dashed var(--line);
     border-radius: 8px;
     padding: 40px 24px;
     text-align: center;
     color: #6B6B72;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.filter-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+    border-color: var(--pine);
+}
+
+.filter-btn.active {
+    background-color: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
 }
 
 /* ---------- Contact ---------- */
