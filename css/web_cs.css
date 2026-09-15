@@ -225,9 +225,8 @@ header {
     color: var(--ink);
     transition: border-color 0.2s;
 }
-
-.project-card:hover,
-.project-card:focus-visible {
+/* 프로젝트 카드에 마우스를 올리거나 포커스가 가면 테두리 색상을 바꿔줌 */
+.project-card:hover,.project-card:focus-visible {
     border-color: var(--pine);
 }
 
