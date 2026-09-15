@@ -109,10 +109,12 @@ function renderProjects(repos) {
         container.appendChild(card); // 카드 컨테이너에 추가
     });
 }
-
 loadProjects();
 
-function typewriterLoop(elementId, text, speed = 100, pauseTime = 1500) {
+// ---------- 타이핑 애니메이션 ----------
+// speed: 글자 하나당 타이핑 속도(ms)
+// pauseTime: 한 문장 끝나고 다음 문장 시작 전 대기 시간(ms)
+function typewriterLoop(elementId, text, speed, pauseTime ) { 
     const element = document.getElementById(elementId);
     let index = 0;
 
@@ -121,7 +123,8 @@ function typewriterLoop(elementId, text, speed = 100, pauseTime = 1500) {
             element.textContent += text.charAt(index);
             index++;
             setTimeout(typeNextChar, speed);
-        } else {
+        } 
+        else {
             setTimeout(() => {
                 element.textContent = "";
                 index = 0;
@@ -129,8 +132,6 @@ function typewriterLoop(elementId, text, speed = 100, pauseTime = 1500) {
             }, pauseTime);
         }
     }
-
     typeNextChar();
 }
-
 typewriterLoop("typewriter", "안녕하세요\n반가워요!", 200, 2500);
