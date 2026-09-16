@@ -83,14 +83,26 @@ header {
     border-bottom: 1px solid var(--line);
     position: sticky;
     top: 0;
-    background-color: var(--paper);
+    background-color: transparent;   /* 기본값: 투명 (또는 원하는 초기 색) */
     z-index: 10;
+    transition: background-color 0.3s;  /* 부드럽게 전환 */
+}
+
+/* scrolled이라는 이름의 클래스가 header에 붙으면 이 스타일 적용 */
+header.scrolled {
+    background-color: var(--pine);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+header.scrolled .wordmark,
+header.scrolled .nav-list a {
+    color: var(--paper);
 }
 
 .header-inner {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 16px;
+    padding: 16px; 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
