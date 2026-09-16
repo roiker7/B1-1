@@ -5,9 +5,26 @@ const html = document.documentElement;
 toggleButton.addEventListener("click", () => {
   const isDark = html.getAttribute("data-theme") === "dark";
   html.setAttribute("data-theme", isDark ? "light" : "dark");
-
-// 다크모드 버튼 누를 때 아이콘도 같이 바꿔주기
   toggleButton.textContent = isDark ? "🌙" : "☀️";
+});
+
+// ---------- 햄버거 메뉴 (신규 추가) ----------
+const navToggle = document.getElementById("nav-toggle");
+const siteNav = document.getElementById("site-nav");
+
+navToggle.addEventListener("click", () => {
+  const isOpen = siteNav.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", isOpen);
+  navToggle.textContent = isOpen ? "✕" : "☰";
+});
+
+// 메뉴 안의 링크를 클릭하면 자동으로 메뉴 닫기 (모바일 UX)
+siteNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    siteNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.textContent = "☰";
+  });
 });
 
 // CTA 버튼 클릭 시 Contact 섹션으로 스크롤
@@ -18,11 +35,11 @@ CTAButton.addEventListener("click", () => {
 });
 
 // GitHub API를 통해 프로젝트 불러오기
-let allRepos = [];       // GitHub에서 가져온 "내 소유" 저장소 전체를 저장해둘 변수
-let currentFilter = "all"; // 지금 선택된 언어 필터
+let allRepos = [];
+let currentFilter = "all";
 
 async function loadProjects() {
-    const username = "roiker7"; 
+    const username = "roiker7";
     const container = document.getElementById("projects-container");
 
     container.innerHTML = `불러오는 중...`;
@@ -35,8 +52,6 @@ async function loadProjects() {
         }
 
         const repos = await response.json();
-
-        // 소유자가 나인 것만 남기기
         allRepos = repos.filter(repo => repo.owner.login === username);
 
         renderLanguageFilters(allRepos);
@@ -47,27 +62,24 @@ async function loadProjects() {
         console.error(error);
     }
 }
-
-// ----------  어떤 언어들이 있는지 뽑아서 버튼 만들기 ----------
+// 언어 필터 버튼 렌더링
 function renderLanguageFilters(repos) {
     const filterContainer = document.getElementById("language-filters");
 
-    // language 값만 뽑고, null 제거하고, 중복 제거
     const languages = [...new Set(
         repos.map(repo => repo.language).filter(lang => lang !== null)
     )];
 
     filterContainer.innerHTML = `<button class="filter-btn active" data-lang="all">전체</button>`;
-    
-    // "전체" 버튼에 데이터 속성으로 "all" 저장
+
     languages.forEach(lang => {
         const btn = document.createElement("button");
         btn.className = "filter-btn";
-        btn.textContent = lang; // 버튼에 언어 이름 표시
-        btn.dataset.lang = lang; // 버튼에 데이터 속성으로 언어 저장
-        filterContainer.appendChild(btn); // 버튼을 필터 컨테이너에 추가
+        btn.textContent = lang;
+        btn.dataset.lang = lang;
+        filterContainer.appendChild(btn);
     });
-
+    // 필터 버튼 클릭 이벤트
     filterContainer.querySelectorAll(".filter-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             filterContainer.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -75,7 +87,6 @@ function renderLanguageFilters(repos) {
 
             currentFilter = btn.dataset.lang;
 
-            // 핵심: array.filter()로 언어별 필터링
             const filtered = currentFilter === "all"
                 ? allRepos
                 : allRepos.filter(repo => repo.language === currentFilter);
@@ -85,7 +96,6 @@ function renderLanguageFilters(repos) {
     });
 }
 
-// ---------- 2. 카드 그리기 ----------
 function renderProjects(repos) {
     const container = document.getElementById("projects-container");
 
@@ -93,28 +103,25 @@ function renderProjects(repos) {
         container.innerHTML = `해당하는 프로젝트가 없어요`;
         return;
     }
-
+    // 프로젝트 카드 초기화
     container.innerHTML = "";
 
     repos.forEach(repo => {
-        const card = document.createElement("a"); // 카드 요소를 앵커 태그로 생성
-        card.className = "project-card"; 
+        const card = document.createElement("a");
+        card.className = "project-card";
         card.href = repo.html_url;
-        card.target = "_blank"; // 새 탭에서 열기
+        card.target = "_blank";
         card.innerHTML = `
             <h3>${repo.name}</h3>
             <p>${repo.description ? repo.description : "자세한 설명은 GitHub에서 확인해주세요."}</p>
-         
         `;
-        container.appendChild(card); // 카드 컨테이너에 추가
+        container.appendChild(card);
     });
 }
 loadProjects();
 
 // ---------- 타이핑 애니메이션 ----------
-// speed: 글자 하나당 타이핑 속도(ms)
-// pauseTime: 한 문장 끝나고 다음 문장 시작 전 대기 시간(ms)
-function typewriterLoop(elementId, text, speed, pauseTime ) { 
+function typewriterLoop(elementId, text, speed, pauseTime) {
     const element = document.getElementById(elementId);
     let index = 0;
 
@@ -123,8 +130,7 @@ function typewriterLoop(elementId, text, speed, pauseTime ) {
             element.textContent += text.charAt(index);
             index++;
             setTimeout(typeNextChar, speed);
-        } 
-        else {
+        } else {
             setTimeout(() => {
                 element.textContent = "";
                 index = 0;

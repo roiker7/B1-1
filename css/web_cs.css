@@ -5,9 +5,9 @@
     --pine: #2F5D50;
     --amber: #D98E3F;
     --line: #DAD7CF;
-    --max : 960px;
+    --max: 960px;
 }
-/* html 태그에 data-theme="dark"가 붙으면 이 값들로 덮어씀 */
+
 [data-theme="dark"] {
     --paper: #1A1A1E;
     --ink: #F3F2EE;
@@ -15,22 +15,9 @@
     --amber: #E8A860;
     --line: #3A3A40;
 }
-/* 스크롤 시 부드럽게 이동하도록 */
+
 html {
     scroll-behavior: smooth;
-}
-
-/* 색이 갑자기 훅 바뀌지 않고 부드럽게 전환되도록 */
-body {
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#theme-toggle {
-    background: var(--ink);
-    border: 3px solid var(--ink);
-    border-radius: 999px;
-    width: 40px;
-    height: 40px;
 }
 
 * {
@@ -43,6 +30,7 @@ body {
     color: var(--ink);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2 {
@@ -51,14 +39,22 @@ h1, h2 {
     margin: 0;
 }
 
+/* ---------- 레이아웃 컨테이너 (모바일 기준: 좁은 padding) ---------- */
 main {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 16px;
 }
 
+@media (min-width: 768px) {
+    main {
+        padding: 0 24px;
+    }
+}
+
+/* ---------- 섹션 공통 (모바일: 좁은 여백) ---------- */
 section {
-    padding: 64px 0;
+    padding: 48px 0;
     border-bottom: 1px solid var(--line);
 }
 
@@ -67,28 +63,45 @@ section:last-child {
 }
 
 section h2 {
-    font-size: 28px;
-    margin-bottom: 24px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 64px 0;
+    }
+
+    section h2 {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
 }
 
 /* ---------- 헤더 / 내비게이션 ---------- */
 header {
     border-bottom: 1px solid var(--line);
-    position: sticky;      /* 스크롤시 고정 */
-    top: 0;                 
-    background-color: var(--paper); /* 뒤에 비치지 않게 배경색 지정 */
-    z-index: 10;             /* 해더 맨 앞으로 보내기(우선 순위지정) */
+    position: sticky;
+    top: 0;
+    background-color: var(--paper);
+    z-index: 10;
 }
 
 .header-inner {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 20px 24px;
+    padding: 16px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 12px;
+}
+
+@media (min-width: 768px) {
+    .header-inner {
+        padding: 20px 24px;
+    }
 }
 
 .wordmark {
@@ -97,19 +110,45 @@ header {
     font-weight: 500;
 }
 
+/* 햄버거 버튼: 모바일 기본은 보임 */
+.nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 18px;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+/* nav 전체: 모바일 기본은 숨김, 열리면 헤더 아래로 한 줄 전체 차지 */
+.site-nav {
+    display: none;
+    order: 3;
+    flex-basis: 100%;
+}
+
+.site-nav.open {
+    display: block;
+}
+
 .nav-list {
     display: flex;
-    gap: 24px;
+    flex-direction: column;
+    gap: 4px;
     list-style: none;
-    padding: 0;
+    padding: 12px 0 4px;
     margin: 0;
-    align-items: center;    
 }
 
 .nav-list li {
-    display: flex;         
-    align-items: center;     
-    height: 40px;            
+    display: flex;
+    align-items: center;
+    height: 44px;
 }
 
 .nav-list a {
@@ -118,11 +157,11 @@ header {
     font-size: 15px;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s;
-
-    display: flex;            
-    align-items: center;      
-    height: 100%;               
-    line-height: 1;             
+    display: flex;
+    align-items: center;
+    height: 100%;
+    line-height: 1;
+    width: 100%;
 }
 
 .nav-list a:hover,
@@ -130,28 +169,65 @@ header {
     border-color: var(--pine);
 }
 
-#typewriter {
-  white-space: pre-line;
-  display: block;
-  min-height: 2.8em;
-  line-height: 1.4;
+/* 768px부터: 햄버거 숨기고, nav를 항상 가로로 표시 */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .site-nav {
+        display: block !important;
+        order: 0;
+        flex-basis: auto;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        padding: 0;
+    }
 }
 
-/* ---------- Hero ---------- */
+#typewriter {
+    white-space: pre-line;
+    display: block;
+    min-height: 2.8em;
+    line-height: 1.4;
+}
+
+/* ---------- Hero (모바일: 여백 좁게, 화면 커질수록 넉넉하게) ---------- */
 .hero {
-    padding-top: 88px;
+    padding-top: 56px;
 }
 
 .hero h1 {
-    font-size: clamp(36px, 6vw, 52px);
+    font-size: clamp(32px, 8vw, 52px);
     line-height: 1.15;
 }
 
 .hero-text {
-    margin-top: 20px;
-    margin-bottom: 32px;
+    margin-top: 16px;
+    margin-bottom: 24px;
     color: #a1a1ae;
-    max-width: var(--max);
+    max-width: 46ch;
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding-top: 88px;
+    }
+
+    .hero-text {
+        margin-top: 20px;
+        margin-bottom: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        padding-top: 120px;
+    }
 }
 
 /* ---------- 버튼 (CTA) ---------- */
@@ -177,20 +253,48 @@ header {
     outline-offset: 2px;
 }
 
-/* ---------- About ---------- */
+/* ---------- 다크모드 버튼 ---------- */
+#theme-toggle {
+    background: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* ---------- About (모바일: 세로, 768px부터 가로) ---------- */
 .about-body {
     display: flex;
-    gap: 32px;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .profile-image {
-    width: 140px;
-    height: 140px;
-    object-fit: cover; /* 이미지가 잘리지 않고 꽉 차도록 */
-    border-radius: 50%; /* 원형으로 만들기 */
-    flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
     background-color: #F3F2EE;
+}
+
+@media (min-width: 768px) {
+    .about-body {
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .profile-image {
+        width: 140px;
+        height: 140px;
+    }
 }
 
 /* ---------- Skill ---------- */
@@ -213,14 +317,18 @@ header {
 }
 
 /* ---------- Projects ---------- */
-/* 그리드 배치 */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 16px;
 }
 
-/* 프로젝트 카드 박스 */
+@media (min-width: 768px) {
+    .projects-grid {
+        gap: 20px;
+    }
+}
+
 .project-card {
     border: 1px solid var(--line);
     border-radius: 10px;
@@ -230,10 +338,11 @@ header {
     gap: 8px;
     text-decoration: none;
     color: var(--ink);
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-/* 프로젝트 카드에 마우스를 올리거나 포커스가 가면 테두리 색상을 바꿔줌 */
-.project-card:hover,.project-card:focus-visible {
+
+.project-card:hover,
+.project-card:focus-visible {
     transform: translateY(-2px);
     border-color: var(--pine);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -251,18 +360,18 @@ header {
     flex-grow: 1;
 }
 
-/* 로딩 / 에러 / 빈 상태 공통 스타일 */
 .projects-status {
-    grid-column: 1 / -1;  
+    grid-column: 1 / -1;
     border: 1px dashed var(--line);
-    border-radius: 8px; 
+    border-radius: 8px;
+    padding: 32px 16px;
     text-align: center;
     color: #6B6B72;
 }
 
 .filter-buttons {
     display: flex;
-    flex-wrap: wrap; /* 버튼이 화면에 맞게 줄바꿈되도록 */
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 24px;
 }
@@ -274,6 +383,7 @@ header {
     color: var(--ink);
     padding: 6px 14px;
     border-radius: 999px;
+    cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
@@ -327,26 +437,20 @@ header {
 footer {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 32px 24px 64px;
+    padding: 32px 16px 48px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     color: #6B6B72;
 }
 
-footer a {
-    color: inherit;
+@media (min-width: 768px) {
+    footer {
+        padding: 32px 24px 64px;
+    }
 }
 
-/* ---------- 모바일 대응 ---------- */
-@media (max-width: 640px) {
-    .about-body {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    section {
-        padding: 48px 0;
-    }
+footer a {
+    color: inherit;
 }
 
 /* ---------- 모션 최소화 옵션 존중 ---------- */
