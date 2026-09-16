@@ -98,6 +98,11 @@ header.scrolled .wordmark,
 header.scrolled .nav-list a {
     color: var(--paper);
 }
+/* 밑줄 색도 배경과 어울리게 조정 */
+header.scrolled .nav-list a:hover,
+header.scrolled .nav-list a:focus-visible {
+    border-color: var(--paper);
+}
 
 .header-inner {
     max-width: var(--max);

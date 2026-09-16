@@ -1,14 +1,28 @@
-// 다크모드 토글 버튼
+// ---------- 다크모드 토글 버튼 ----------
 const toggleButton = document.getElementById("theme-toggle");
 const html = document.documentElement;
 
+// 1. 페이지가 열리자마자, 저장된 테마가 있는지 확인해서 미리 적용
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  html.setAttribute("data-theme", "dark");
+  toggleButton.textContent = "☀️";
+} else {
+  toggleButton.textContent = "🌙";
+}
+
+// 2. 버튼 클릭 시, 테마 전환 + 로컬스토리지에 저장
 toggleButton.addEventListener("click", () => {
   const isDark = html.getAttribute("data-theme") === "dark";
-  html.setAttribute("data-theme", isDark ? "light" : "dark");
-  toggleButton.textContent = isDark ? "🌙" : "☀️";
-});
+  const newTheme = isDark ? "light" : "dark";
 
-// ---------- 햄버거 메뉴 (신규 추가) ----------
+  html.setAttribute("data-theme", newTheme);
+  toggleButton.textContent = isDark ? "🌙" : "☀️";
+
+  localStorage.setItem("theme", newTheme);
+});
+// ---------- 햄버거 메뉴  ----------
 const navToggle = document.getElementById("nav-toggle");
 const siteNav = document.getElementById("site-nav");
 
