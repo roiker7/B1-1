@@ -152,3 +152,21 @@ contactForm.addEventListener("submit", (event) => {
   formStatus.textContent = "문의가 접수됐어요! 빠른 시일 내에 답변드릴게요.";
   contactForm.reset();
 });
+
+// ---------- 스크롤 시 상단으로 이동 버튼 ----------
+const topButton = document.querySelector("#topButton");
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= 300) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+});
+
+topButton.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});

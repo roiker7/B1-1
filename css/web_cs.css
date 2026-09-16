@@ -440,6 +440,33 @@ header {
     min-height: 1.2em; /* 메시지 없을 때도 자리 미리 확보해 레이아웃이 안 흔들리게 */
 }
 
+/* ---------- Top Button ---------- */
+#topButton {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: #333;
+  color: white;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  display: none;
+
+  z-index: 999;
+}
+
+#topButton:hover {
+  background-color: #555;
+}
+
 /* ---------- Footer ---------- */
 footer {
     max-width: var(--max);
