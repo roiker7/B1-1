@@ -57,7 +57,7 @@ function renderLanguageFilters(repos) {
         repos.map(repo => repo.language).filter(lang => lang !== null)
     )];
 
-    filterContainer.innerHTML = `전체`;
+    filterContainer.innerHTML = `<button class="filter-btn active" data-lang="all">전체</button>`;
     
     // "전체" 버튼에 데이터 속성으로 "all" 저장
     languages.forEach(lang => {
