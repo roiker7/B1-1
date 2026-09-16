@@ -433,6 +433,13 @@ header {
     align-self: flex-start;
 }
 
+.form-status {
+    font-size: 14px;
+    color: var(--pine);
+    margin-top: 12px;
+    min-height: 1.2em; /* 메시지 없을 때도 자리 미리 확보해 레이아웃이 안 흔들리게 */
+}
+
 /* ---------- Footer ---------- */
 footer {
     max-width: var(--max);

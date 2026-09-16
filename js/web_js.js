@@ -141,3 +141,14 @@ function typewriterLoop(elementId, text, speed, pauseTime) {
     typeNextChar();
 }
 typewriterLoop("typewriter", "안녕하세요\n반가워요!", 200, 2500);
+
+// ---------- Contact 폼 제출 처리 ----------
+const contactForm = document.querySelector(".contact form");
+const formStatus = document.getElementById("form-status");
+
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  formStatus.textContent = "문의가 접수됐어요! 빠른 시일 내에 답변드릴게요.";
+  contactForm.reset();
+});
