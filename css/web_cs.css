@@ -16,6 +16,16 @@
     --line: #3A3A40;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --paper: #1A1A1E;
+        --ink: #F3F2EE;
+        --pine: #6FB6A3;
+        --amber: #E8A860;
+        --line: #3A3A40;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }

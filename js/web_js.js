@@ -8,10 +8,10 @@ const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
   html.setAttribute("data-theme", "dark");
   toggleButton.textContent = "☀️";
-} else {
+} else if (savedTheme === "light") {
+  html.setAttribute("data-theme", "light");
   toggleButton.textContent = "🌙";
 }
-
 // 2. 버튼 클릭 시, 테마 전환 + 로컬스토리지에 저장
 toggleButton.addEventListener("click", () => {
   const isDark = html.getAttribute("data-theme") === "dark";
@@ -22,6 +22,7 @@ toggleButton.addEventListener("click", () => {
 
   localStorage.setItem("theme", newTheme);
 });
+
 // ---------- 햄버거 메뉴  ----------
 const navToggle = document.getElementById("nav-toggle");
 const siteNav = document.getElementById("site-nav");
