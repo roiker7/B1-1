@@ -1,4 +1,4 @@
- https://roiker7.github.io/B1-1/
+웹 사이트: https://roiker7.github.io/B1-1/
 
 # B1-1
 ## 과제 목표
