@@ -1,4 +1,4 @@
-// ---------- 다크모드 토글 버튼 ----------
+//  다크모드 토글 버튼 
 const toggleButton = document.getElementById("theme-toggle");
 const html = document.documentElement;
 
@@ -23,7 +23,7 @@ toggleButton.addEventListener("click", () => {
   localStorage.setItem("theme", newTheme);
 });
 
-// ---------- 햄버거 메뉴  ----------
+// 햄버거 메뉴  
 const navToggle = document.getElementById("nav-toggle");
 const siteNav = document.getElementById("site-nav");
 
@@ -135,7 +135,7 @@ function renderProjects(repos) {
 }
 loadProjects();
 
-// ---------- 타이핑 애니메이션 ----------
+//  타이핑 애니메이션 
 function typewriterLoop(elementId, text, speed, pauseTime) {
     const element = document.getElementById(elementId);
     let index = 0;
@@ -157,7 +157,7 @@ function typewriterLoop(elementId, text, speed, pauseTime) {
 }
 typewriterLoop("typewriter", "안녕하세요\n반가워요!", 200, 2500);
 
-// ---------- Contact 폼 제출 처리 ----------
+//  Contact 폼 제출 처리 
 const contactForm = document.querySelector(".contact form");
 const formStatus = document.getElementById("form-status");
 
@@ -168,7 +168,7 @@ contactForm.addEventListener("submit", (event) => {
   contactForm.reset();
 });
 
-// ---------- 스크롤 시 상단으로 이동 버튼 ----------
+//  스크롤 시 상단으로 이동 버튼 
 const topButton = document.querySelector("#topButton");
 
 window.addEventListener("scroll", function () {
@@ -186,7 +186,7 @@ topButton.addEventListener("click", function () {
   });
 });
 
-// ---------- 스크롤 시 헤더 배경색 변경 ----------
+//  스크롤 시 헤더 배경색 변경 
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
