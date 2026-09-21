@@ -111,6 +111,7 @@ function renderLanguageFilters(repos) {
     });
 }
 
+// 프로젝트 카드 렌더링
 function renderProjects(repos) {
     const container = document.getElementById("projects-container");
 
