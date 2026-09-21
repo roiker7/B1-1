@@ -164,7 +164,32 @@ const formStatus = document.getElementById("form-status");
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const message = messageInput.value.trim();
+
+  // 1. 빈 값 검사
+  if (name === "" || email === "" || message === "") {
+    formStatus.textContent = "모든 항목을 입력해주세요.";
+    formStatus.classList.add("error");
+    return;
+  }
+
+  // 2. 이메일 형식 검사
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    formStatus.textContent = "올바른 이메일 형식이 아니에요.";
+    formStatus.classList.add("error");
+    return;
+  }
+
+  // 3. 모든 검증을 통과했을 때만 성공 처리
   formStatus.textContent = "문의가 접수됐어요! 빠른 시일 내에 답변드릴게요.";
+  formStatus.classList.remove("error");
   contactForm.reset();
 });
 
