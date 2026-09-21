@@ -32,13 +32,13 @@
 - 콘텐츠의 크기에 따라 자연스럽게 늘어나거나 줄어드는 **유동적인 배치**에 강합니다.
 
 **실제 코드 예시** — nav 메뉴, 다크모드 버튼 정렬
-\`\`\`css
+```css
 .nav-list {
     display: flex;
     gap: 24px;
     align-items: center;
 }
-\`\`\`
+```
 메뉴 항목들이 "가로 한 줄"로만 나열되면 되는 상황이라 Flexbox를 썼습니다.
 
 ### 2. Grid — 2차원(가로+세로 동시) 배치
@@ -47,13 +47,13 @@
 - 몇 개가 들어올지 정확히 모르는 콘텐츠를 자동으로 줄바꿈시키면서 격자로 정렬하는 데 강합니다.
 
 **실제 코드 예시** — Projects 섹션의 GitHub 카드
-\`\`\`css
+```css
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
 }
-\`\`\`
+```
 GitHub API로 가져오는 저장소 개수가 몇 개일지 미리 알 수 없는데, Grid를 쓰면 "각 칸은 최소 220px, 화면 너비에 맞춰 자동으로 줄바꿈"이 알아서 처리됩니다. 이걸 Flexbox로 하려면 `flex-wrap`으로 어느 정도 흉내는 낼 수 있지만, 각 줄의 칸 개수를 맞추는 게 Grid보다 훨씬 까다로워집니다.
 
 ### 3. 선택 기준 요약
